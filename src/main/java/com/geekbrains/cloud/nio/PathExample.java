@@ -24,10 +24,8 @@ public class PathExample {
         Path fxml = dir.resolve("123.fxml");
         System.out.println(Files.exists(fxml));
         System.out.println(Files.size(fxml));
-
         System.out.println(dir);
         System.out.println(dir.toAbsolutePath());
-
         startListening(dir);
     }
 

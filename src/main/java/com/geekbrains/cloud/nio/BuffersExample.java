@@ -19,8 +19,8 @@ public class BuffersExample {
         buf.clear();
         buf.put("Hello world".getBytes(StandardCharsets.UTF_8));
         buf.flip();
-        while (buf.hasRemaining()) {
-            byte b = buf.get();
+            while (buf.hasRemaining()) {
+            byte b  = buf.get();
             System.out.print((char) b);
         }
         System.out.println();
