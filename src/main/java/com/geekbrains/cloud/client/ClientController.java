@@ -107,7 +107,7 @@ public class ClientController implements Initializable {
             currentDir = new File(System.getProperty("user.home"));
             fillCurrentDirFiles();
             initClickListener();
-            Socket socket = new Socket("localhost", 8189);
+            Socket socket = new Socket("localhost", 8195);
             is = new DataInputStream(socket.getInputStream());
             os = new DataOutputStream(socket.getOutputStream());
             Thread readThread = new Thread(this::read);
