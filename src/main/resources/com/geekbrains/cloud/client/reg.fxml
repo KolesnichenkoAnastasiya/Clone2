@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.geekbrains.cloud.client.RegController">
+    <children>
+        <AnchorPane layoutY="96.0" prefHeight="304.0" prefWidth="600.0" style="-fx-background-color: #E0FFFF;">
+            <children>
+                <TextField fx:id="nameField" layoutX="170.0" layoutY="37.0" prefHeight="42.0" prefWidth="260.0" promptText="name" style="-fx-border-color: silver;">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+                <TextField fx:id="loginField" layoutX="170.0" layoutY="95.0" prefHeight="42.0" prefWidth="260.0" promptText="login">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+                <Button fx:id="regSignUpButton" layoutX="230.0" layoutY="221.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="141.0" style="-fx-background-color: #2E3348;" text="Registration" textFill="LIGHTCYAN">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <TextField fx:id="passwordField" layoutX="170.0" layoutY="152.0" prefHeight="42.0" prefWidth="260.0" promptText="password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            </children>
+        </AnchorPane>
+        <Label layoutX="128.0" layoutY="28.0" prefHeight="60.0" prefWidth="345.0" text="Welcome to the vault" textAlignment="CENTER" textFill="PALETURQUOISE">
+         <font>
+            <Font size="34.0" />
+         </font></Label>
+    </children>
+</AnchorPane>

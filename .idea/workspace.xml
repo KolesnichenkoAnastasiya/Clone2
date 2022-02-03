@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d6ad025-6fcf-43f9-b2a8-67622389d837" name="Default Changelist" comment="">
+    <list default="true" id="5d6ad025-6fcf-43f9-b2a8-67622389d837" name="Default Changelist" comment="Создала окно для регистрации и авторизации">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/client/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/client/RegController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/client/auth.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/client/reg.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/client/ClientApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/client/ClientApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/client/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/client/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +160,14 @@
       <workItem from="1640282498161" duration="4517000" />
       <workItem from="1640625050065" duration="5298000" />
     </task>
+    <task id="LOCAL-00001" summary="Создала окно для регистрации и авторизации">
+      <created>1643902601946</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1643902601946</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,5 +184,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Создала окно для регистрации и авторизации" />
+    <option name="LAST_COMMIT_MESSAGE" value="Создала окно для регистрации и авторизации" />
   </component>
 </project>
