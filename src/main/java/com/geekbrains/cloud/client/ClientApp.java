@@ -12,8 +12,5 @@ public class ClientApp extends Application {
         Parent parent = FXMLLoader.load(getClass().getResource("auth.fxml"));
         primaryStage.setScene(new Scene(parent));
         primaryStage.show();
-//        Parent parent = FXMLLoader.load(getClass().getResource("client.fxml"));
-//        primaryStage.setScene(new Scene(parent));
-//        primaryStage.show();
     }
 }

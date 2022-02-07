@@ -33,7 +33,7 @@ public class NioEchoServer {
         serverChannel = ServerSocketChannel.open();
         selector = Selector.open();
         serverChannel.configureBlocking(false);
-                serverChannel.bind(new InetSocketAddress(8195));
+                serverChannel.bind(new InetSocketAddress(8198));
         serverChannel.register(selector, SelectionKey.OP_ACCEPT);
         System.out.println("Server started...");
         while (serverChannel.isOpen()) {
@@ -173,8 +173,6 @@ public class NioEchoServer {
             channel.write(ByteBuffer.wrap((item + "\n\r").getBytes(StandardCharsets.UTF_8)));
         }
     }
-
-//}
 
     private void handleAccept() throws IOException {
         SocketChannel channel = serverChannel.accept();

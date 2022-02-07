@@ -9,7 +9,6 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ResourceBundle;
-
 import com.geekbrains.cloud.utils.SenderUtils;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -19,22 +18,15 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 public class ClientController implements Initializable {
-
     private static final int SIZE = 256;
-
     public ListView<String> clientView;
     public ListView<String> serverView;
-
     public TextField textField;
     public Label clientLabel;
     public Label serverLabel;
-
-
     private DataInputStream is;
     private DataOutputStream os;
-
     private File currentDir;
-
     private byte[] buf;
 
     private void read() {
@@ -44,7 +36,6 @@ public class ClientController implements Initializable {
                 System.out.println("Received command: " + command);
                 if (command.equals("#LIST")) {
                     Platform.runLater(() -> serverView.getItems().clear());
-
                     int count = is.readInt();
                     for (int i = 0; i < count; i++) {
                         String fileName = is.readUTF();
@@ -59,7 +50,6 @@ public class ClientController implements Initializable {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            // reconnect to server
         }
     }
 
@@ -107,7 +97,7 @@ public class ClientController implements Initializable {
             currentDir = new File(System.getProperty("user.home"));
             fillCurrentDirFiles();
             initClickListener();
-            Socket socket = new Socket("localhost", 8195);
+            Socket socket = new Socket("localhost", 8198);
             is = new DataInputStream(socket.getInputStream());
             os = new DataOutputStream(socket.getOutputStream());
             Thread readThread = new Thread(this::read);

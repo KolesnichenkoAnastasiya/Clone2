@@ -1,5 +1,4 @@
 package com.geekbrains.cloud.utils;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -54,5 +53,4 @@ public class SenderUtils {
             }
         }
     }
-
 }
