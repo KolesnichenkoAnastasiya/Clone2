@@ -11,6 +11,10 @@ public class User {
         this.pass_user = pass_user;
     }
 
+    public User() {
+
+    }
+
     public String getName_user() {
         return name_user;
     }
