@@ -10,12 +10,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class AuthController {
 
+    public static String path_dir;
     @FXML
     private Button authSignUpButton;
 
@@ -37,18 +41,24 @@ public class AuthController {
         authSignUpButton.setOnAction(event -> {
             String loginText = loginField.getText();
             String passwordText = passwordField.getText();
-            if (!loginText.equals("")&& !passwordText.equals(""))
-                loginUser(loginText, passwordText);
+            if (!loginText.equals("")&& !passwordText.equals("")) {
+                try {
+                    loginUser(loginText, passwordText);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
             else System.out.println("Login or password is empty");
         });
     }
 
-    private void loginUser(String loginText, String passwordText) {
+    private void loginUser(String loginText, String passwordText) throws SQLException {
         DatabaseHandler dbHandler = new DatabaseHandler();
         User user = new User();
         user.setLogin_user(loginText);
         user.setPass_user(passwordText);
         ResultSet result = dbHandler.getUser(user);
+        /**/
         int counter = 0;
         while (true){
             try {
@@ -57,9 +67,23 @@ public class AuthController {
                 e.printStackTrace();
             }
             counter++;
+            path_dir = result.getString(5);/*путь к директории*/
+            System.out.println(path_dir);
         }
+
+//        int counter = 0;
+//        while (true){
+//            try {
+//                if (!result.next()) break;
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//            counter++;
+//
+//        }
         if(counter>=1){
             newScene("client.fxml");
+
         }
             else {
             Shake userLoginAnimation = new Shake(loginField);

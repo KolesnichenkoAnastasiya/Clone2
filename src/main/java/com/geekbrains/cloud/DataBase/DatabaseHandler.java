@@ -28,11 +28,13 @@ public class DatabaseHandler extends Configs {
 
     public static void signUpUser(User user){
         try{
-            String insert = "INSERT INTO " + Configs.dbTable + "(name_user, login_user, pass_user) VALUES (?, ?, ?);";
+            String insert = "INSERT INTO " + Configs.dbTable + "(name_user, login_user, pass_user, user_directory) VALUES (?, ?, ?, ?);";
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
             prSt.setString(1, user.getName_user());
             prSt.setString(2, user.getLogin_user());
             prSt.setString(3, user.getPass_user());
+            String path = "C:\\Users\\Настя\\IdeaProjects\\Clone2_new\\serverDir\\" + user.getLogin_user();
+            prSt.setString(4, path);
             prSt.executeUpdate();
 
         }catch (SQLException e) {
