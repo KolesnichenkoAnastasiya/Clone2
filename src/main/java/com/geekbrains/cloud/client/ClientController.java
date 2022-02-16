@@ -7,11 +7,14 @@ import java.net.Socket;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import com.geekbrains.cloud.utils.SenderUtils;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -23,10 +26,19 @@ public class ClientController implements Initializable {
     public TextField textField;
     public Label clientLabel;
     public Label serverLabel;
+    public TextField clientPath;
+    public TextField serverPath;
     private DataInputStream is;
     private DataOutputStream os;
     private File currentDir;
+    private File serverDir;
     private byte[] buf;
+
+    @FXML
+    private Button serverUp;
+    @FXML
+    private Button serverDown;
+
 
     private void read() {
         try {
@@ -45,6 +57,7 @@ public class ClientController implements Initializable {
                     SenderUtils.getFileFromInputStream(is, currentDir);
                     // client state updated
                     Platform.runLater(this::fillCurrentDirFiles);
+
                 }
             }
         } catch (Exception e) {
@@ -74,8 +87,7 @@ public class ClientController implements Initializable {
         }
         return label;
     }
-
-    private void initClickListener() {
+    private void initClickListener() throws NullPointerException{
         clientView.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
                 String fileName = clientView.getSelectionModel().getSelectedItem();
@@ -87,6 +99,17 @@ public class ClientController implements Initializable {
                 }
             }
         });
+        serverView.setOnMouseClicked(e -> {
+            if (e.getClickCount() == 2) {
+                String fileName2 = serverView.getSelectionModel().getSelectedItem();
+                System.out.println("Выбран файл на сервере: " + fileName2);
+                serverDown.setOnAction(event -> {
+                    if (Files.isDirectory(Paths.get(fileName2))) {
+
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -96,7 +119,7 @@ public class ClientController implements Initializable {
             currentDir = new File(System.getProperty("user.home"));
             fillCurrentDirFiles();
             initClickListener();
-            Socket socket = new Socket("localhost", 8198);
+            Socket socket = new Socket("localhost", 8199);
             is = new DataInputStream(socket.getInputStream());
             os = new DataOutputStream(socket.getOutputStream());
             Thread readThread = new Thread(this::read);

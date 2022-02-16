@@ -33,7 +33,7 @@ public class DatabaseHandler extends Configs {
             prSt.setString(1, user.getName_user());
             prSt.setString(2, user.getLogin_user());
             prSt.setString(3, user.getPass_user());
-            String path = "C:\\Users\\Настя\\IdeaProjects\\Clone2_new\\serverDir\\" + user.getLogin_user();
+            String path = "C:\\Users\\Настя\\IdeaProjects\\new_Clone_2_new\\serverDir\\" + user.getLogin_user();
             prSt.setString(4, path);
             prSt.executeUpdate();
 
@@ -53,5 +53,20 @@ public class DatabaseHandler extends Configs {
             e.printStackTrace();
         }
         return resSet;
+    }
+    public static ResultSet getUser(String login) {
+        ResultSet resSet = null;
+        try{
+            String select = "SELECT * FROM " + dbTable + " WHERE login_user =?";
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            prSt.setString(1, login);
+            resSet = prSt.executeQuery();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resSet;
+    }
+    public static boolean isMyResultSetEmpty(ResultSet rs) throws SQLException {
+        return (!rs.isBeforeFirst() && rs.getRow() == 0);
     }
 }

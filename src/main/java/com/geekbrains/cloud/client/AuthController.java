@@ -5,10 +5,13 @@ import com.geekbrains.cloud.DataBase.User;
 import com.geekbrains.cloud.animations.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -17,9 +20,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AuthController {
+import static javafx.scene.Scene.*;
 
-    public static String path_dir;
+public class AuthController {
+    public static String userLog;
+    public File path_dir;
     @FXML
     private Button authSignUpButton;
 
@@ -34,6 +39,7 @@ public class AuthController {
 
     @FXML
     void initialize(){
+
         regSignUpButton.setOnAction(event -> {
             regSignUpButton.getScene().getWindow().hide();
             newScene("reg.fxml");
@@ -56,9 +62,9 @@ public class AuthController {
         DatabaseHandler dbHandler = new DatabaseHandler();
         User user = new User();
         user.setLogin_user(loginText);
+        userLog=loginText;
         user.setPass_user(passwordText);
         ResultSet result = dbHandler.getUser(user);
-        /**/
         int counter = 0;
         while (true){
             try {
@@ -67,23 +73,12 @@ public class AuthController {
                 e.printStackTrace();
             }
             counter++;
-            path_dir = result.getString(5);/*путь к директории*/
+            String pathUser = result.getString(5);
+            path_dir = new File(pathUser);/*путь к директории*/
             System.out.println(path_dir);
         }
-
-//        int counter = 0;
-//        while (true){
-//            try {
-//                if (!result.next()) break;
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//            counter++;
-//
-//        }
         if(counter>=1){
             newScene("client.fxml");
-
         }
             else {
             Shake userLoginAnimation = new Shake(loginField);
@@ -105,4 +100,4 @@ public class AuthController {
         stage.setScene(new Scene(root));
         stage.showAndWait();
     }
-}
+ }

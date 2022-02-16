@@ -1,11 +1,9 @@
 package com.geekbrains.cloud.server;
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.Socket;
-
 import com.geekbrains.cloud.utils.SenderUtils;
 
 public class FileProcessorHandler implements Runnable {
